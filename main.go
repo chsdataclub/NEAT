@@ -99,7 +99,7 @@ func main() {
 			lastemani = emani
 
 			row := [][]float64{
-				{data[i], sumtw / 12, sumts / 26, sumt / 20, ematw, emats, macd, emani - macd, data[0] - (sumt / 20) + 2*dev},
+				{data[i], sumtw / 12, sumts / 26, sumt / 20, ematw, emats, macd, emani - macd, data[i] - (sumt / 20) + 2*dev},
 				{-1},
 			}
 
