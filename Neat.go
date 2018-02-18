@@ -71,7 +71,9 @@ func (n *Neat) start(input [][][]float64, cutoff int, target float64) Network {
 
 	wg.Wait()
 
+	fmt.Println("Starting")
 	for z := 0; strikes > 0 && bestFit < target; z++ {
+		fmt.Println("Mating")
 		//mates
 		for i := 0; i < len(n.species); i++ {
 			wg.Add(1)
@@ -80,12 +82,15 @@ func (n *Neat) start(input [][][]float64, cutoff int, target float64) Network {
 
 		wg.Wait()
 
+		fmt.Println("Training")
 		//trains
 		for i := 0; i < len(n.species); i++ {
 			wg.Add(1)
 			go n.species[i].trainNetworks(input, &wg)
 		}
 		wg.Wait()
+
+		fmt.Println("Post training")
 
 		if z%5 == 0 {
 			n.speciateAll()
